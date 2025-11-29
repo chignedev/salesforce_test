@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Engagement Summary" icon-name="standard:work_order">
+        <template if:true={summary}>
+            <div class="slds-p-around_small">
+                <p class="slds-text-body_regular">
+                    <strong>Engagement:</strong> {summary.engagementName}
+                </p>
+
+                <p class="slds-text-body_regular">
+                    <strong>Opportunity Amount:</strong>
+                    <template if:true={summary.opportunityAmount}>
+                        {summary.opportunityAmount}
+                    </template>
+                    <template if:false={summary.opportunityAmount}>
+                        Not linked to an Opportunity
+                    </template>
+                </p>
+
+                <p class="slds-text-body_regular">
+                    <strong>Completed Tasks:</strong> {summary.completedTasks}
+                </p>
+
+                <p class="slds-text-body_regular">
+                    <strong>Upcoming Events:</strong> {summary.upcomingEvents}
+                </p>
+            </div>
+
+            <div class="slds-p-around_small">
+                <lightning-button
+                    variant="brand"
+                    label="Quick Follow-Up Call"
+                    onclick={handleFollowUp}>
+                </lightning-button>
+            </div>
+        </template>
+
+        <template if:true={error}>
+            <div class="slds-p-around_small slds-text-color_error">
+                {error}
+            </div>
+        </template>
+    </lightning-card>
+</template>
